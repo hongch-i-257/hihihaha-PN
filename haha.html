@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nhi đẹp géi</title>
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #fce4ec; 
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            overflow: hidden; 
+        }
+
+        h1 {
+            color: #d81b60;
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .gif-container {
+            margin-bottom: 20px;
+        }
+
+        img {
+            width: 200px;
+            border-radius: 10px;
+        }
+
+        .buttons {
+            position: relative;
+            display: flex;
+            gap: 20px;
+        }
+
+        button {
+            padding: 15px 30px;
+            font-size: 1.2rem;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: transform 0.2s;
+            font-weight: bold;
+        }
+
+        #yes-btn {
+            background-color: #4caf50;
+            color: white;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+
+        #yes-btn:hover {
+            background-color: #45a049;
+            transform: scale(1.1);
+        }
+
+        #no-btn {
+            background-color: #f44336;
+            color: white;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            position: absolute; 
+        }
+    </style>
+</head>
+<body>
+
+    <div class="gif-container">
+        <img src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExM2Q3YjQ2YjEwM2Q3YjQ2YjEwM2Q3YjQ2YjEwM2Q3YjQ2YjEw/MDJ9IbxxvDUQM/giphy.gif" alt="Cute cat">
+    </div>
+
+    <h1>Cuối tuần chị Nhi rảnh hông, đi xem phim với em nhaa</h1>
+
+    <div class="buttons">
+        <button id="yes-btn">Đi đi đi đii</button>
+        <button id="no-btn">hông</button>
+    </div>
+
+    <script>
+        const noBtn = document.getElementById('no-btn');
+        const yesBtn = document.getElementById('yes-btn');
+        const questionText = document.querySelector('h1');
+        const catImg = document.querySelector('img');
+
+        function moveButton() {
+            const windowWidth = window.innerWidth;
+            const windowHeight = window.innerHeight;
+
+            const randomX = Math.floor(Math.random() * (windowWidth - 100)); 
+            const randomY = Math.floor(Math.random() * (windowHeight - 50));
+
+            noBtn.style.position = 'fixed';
+            noBtn.style.left = randomX + 'px';
+            noBtn.style.top = randomY + 'px';
+        }
+
+        noBtn.addEventListener('mouseover', moveButton);
+        
+        noBtn.addEventListener('touchstart', (e) => {
+            e.preventDefault();
+            moveButton();
+        });
+
+        yesBtn.addEventListener('click', () => {
+            questionText.innerHTML = "Chị muốn xem phim gì nhắn em nhaa <3";
+            catImg.src = "https://media.giphy.com/media/T86i6yDyOYz7J6dPhf/giphy.gif";
+            noBtn.style.display = 'none'; 
+            yesBtn.style.display = 'none'; 
+            
+            document.body.style.backgroundColor = "#ffc1e3";
+        });
+    </script>
+</body>
+</html>
